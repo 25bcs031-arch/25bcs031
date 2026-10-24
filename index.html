@@ -1,106 +1,229 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Kanishka M — The Hand</title>
+<title>Kanishka M — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Fraunces:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#10100c;--ink:#f3efe3;--mute:#b9b4a3;--acid:#d6ff1f;--g:'Space Grotesk',system-ui,sans-serif;--s:'Instrument Serif',Georgia,serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10100c}}
-:root[data-theme="dark"]{--bg:#10100c}
+:root{--bg:#060a1a;--ink:#eaf2ff;--mute:#9fb0d0;--t:#5df2d6;--v:#8b6cff;--c:#ff7a90;--glass:#ffffff12;--ln:#ffffff26;--f:'Sora',system-ui,sans-serif;--s:'Fraunces',Georgia,serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#060a1a}}
+:root[data-theme="dark"]{--bg:#060a1a}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 html,body{height:100%;margin:0}
-body{background:radial-gradient(ellipse at 50% 85%,#2a2f10,var(--bg) 62%);color:var(--ink);font-family:var(--g);overflow:hidden}
-canvas{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none}
-header{position:fixed;top:calc(env(safe-area-inset-top,0px) + 16px);left:5vw;right:5vw;display:flex;justify-content:space-between;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);pointer-events:none}
-header b{color:var(--acid);font-weight:500}
-#nav{position:fixed;left:0;right:0;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:0 4vw}
-#nav button{font:500 13px var(--g);color:var(--ink);background:#ffffff0f;border:1px solid #f3efe355;border-radius:99px;padding:8px 14px;cursor:pointer;transition:.2s}
-#nav button:hover,#nav button:focus-visible,#nav button.h{background:var(--acid);color:#14140f;border-color:var(--acid);outline:none}
-#dt{position:fixed;inset:0;display:none;place-items:center;background:#0a0a07d9;z-index:5;padding:5vw}
-#dt.o{display:grid}
-.sheet{width:min(620px,100%);max-height:84vh;overflow:auto;background:var(--ink);color:#14140f;border-radius:6px;box-shadow:0 30px 80px #000a}
-.sheet .top{background:var(--acid);padding:18px 24px;display:flex;justify-content:space-between;align-items:flex-start}
-.sheet h2{margin:0;font-size:clamp(28px,6vw,44px);letter-spacing:-.02em;line-height:1}
-.sheet h2 em{font-family:var(--s);font-weight:400}
-.sheet .x{font:700 18px var(--g);background:#14140f;color:var(--acid);border:0;width:36px;height:36px;border-radius:50%;cursor:pointer;flex:none}
-.sheet .bd{padding:20px 24px 26px;font-size:16px;line-height:1.55}
-.sheet p{margin:0 0 12px}
-.sheet ul{margin:0;padding:0;list-style:none;display:grid;gap:9px}
-.sheet li{border-left:3px solid var(--acid);padding-left:12px;background:linear-gradient(90deg,#14140f0a,transparent)}
-.sheet li small{display:block;color:#5c5a4c;font-size:13px}
-.sheet a{color:#14140f;font-weight:700}
-.hint{position:fixed;left:0;right:0;bottom:calc(env(safe-area-inset-bottom,0px) + 62px);text-align:center;font:italic 18px var(--s);color:var(--mute);pointer-events:none}
+body{background:radial-gradient(ellipse at 70% 20%,#1a1650,var(--bg) 60%);color:var(--ink);font-family:var(--f);overflow:hidden}
+#c{position:fixed;inset:0;width:100%;height:100%;display:block}
+nav.top{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);left:50%;transform:translateX(-50%);z-index:20;display:flex;gap:2px;padding:5px;background:#0b1130aa;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--ln);border-radius:99px;max-width:94vw;overflow-x:auto;scrollbar-width:none}
+nav.top::-webkit-scrollbar{display:none}
+nav.top button{font:500 13px var(--f);color:var(--mute);background:none;border:0;border-radius:99px;padding:8px 14px;cursor:pointer;white-space:nowrap;transition:.3s}
+nav.top button:hover{color:var(--ink)}
+nav.top button.a{background:linear-gradient(90deg,var(--t),var(--v));color:#06101c;font-weight:700}
+.pg{position:fixed;inset:0;display:none;align-items:center;padding:84px 6vw 40px;overflow-y:auto;z-index:5}
+.pg.on{display:flex}
+.in{width:100%;max-width:1100px;margin:auto}
+[data-a]{opacity:0}
+.pg.on [data-a]{animation:rise .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(.55s + var(--i,0)*.09s)}
+@keyframes rise{from{opacity:0;transform:translateY(40px) scale(.97);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
+.k{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--t);margin:0 0 14px;font-weight:600}
+h1{font-size:clamp(46px,10vw,118px);line-height:.95;margin:0 0 18px;font-weight:700;letter-spacing:-.04em}
+h1 em,h2 em{font-family:var(--s);font-weight:400;background:linear-gradient(90deg,var(--t),var(--c));-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+h2{font-size:clamp(30px,5vw,56px);margin:0 0 22px;line-height:1.05;letter-spacing:-.03em;font-weight:600}
+p{line-height:1.65;color:var(--mute);font-size:clamp(15px,1.5vw,18px);margin:0 0 14px;max-width:560px}
+.btn{display:inline-block;border:0;cursor:pointer;font:600 14px var(--f);padding:13px 22px;border-radius:99px;text-decoration:none;margin:6px 10px 6px 0;color:#06101c;background:linear-gradient(90deg,var(--t),var(--v));transition:.3s}
+.btn.g{background:var(--glass);color:var(--ink);border:1px solid var(--ln)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px #5df2d640}
+.gl{background:var(--glass);border:1px solid var(--ln);border-radius:20px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:22px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+[data-tilt]{transition:transform .25s ease-out;transform-style:preserve-3d;will-change:transform}
+.gl h3{margin:0 0 6px;font-size:20px;font-weight:600}
+.gl small{color:var(--t);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.gl p{font-size:15px;margin:10px 0 0}
+.prof{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:clamp(24px,5vw,60px);align-items:center}
+.card{padding:30px;text-align:center;position:relative;overflow:hidden}
+.card::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at var(--gx,50%) var(--gy,0%),#ffffff2e,transparent 55%);pointer-events:none}
+.av{width:140px;height:140px;margin:0 auto 18px;border-radius:50%;padding:5px;background:conic-gradient(from 0deg,var(--t),var(--v),var(--c),var(--t));animation:spin 6s linear infinite}
+.av span{display:grid;place-items:center;width:100%;height:100%;border-radius:50%;background:#0b1130;font-size:44px;font-weight:700;letter-spacing:-.04em;animation:spin 6s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.card h3{font-size:28px;margin:0}
+.chip{display:inline-flex;align-items:center;gap:8px;margin:12px 0 4px;font-size:13px;border:1px solid var(--ln);border-radius:99px;padding:6px 14px;color:var(--ink)}
+.chip i{width:8px;height:8px;border-radius:50%;background:var(--t);animation:pulse 1.6s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 7px #5df2d600;opacity:.5}0%{box-shadow:0 0 0 0 #5df2d6aa}}
+dl{display:grid;grid-template-columns:auto 1fr;gap:12px 22px;margin:0 0 24px;font-size:15px}
+dt{color:var(--mute)}dd{margin:0;font-weight:600}
+.stats{display:flex;gap:30px;flex-wrap:wrap}
+.stats b{display:block;font-size:clamp(34px,5vw,54px);letter-spacing:-.04em;background:linear-gradient(90deg,var(--t),var(--v));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stats span{font-size:13px;color:var(--mute)}
+.tl{border-left:2px solid var(--ln);padding-left:20px;display:grid;gap:18px;margin-top:8px}
+.tl div{position:relative}
+.tl div::before{content:"";position:absolute;left:-27px;top:6px;width:11px;height:11px;border-radius:50%;background:var(--t);box-shadow:0 0 14px var(--t)}
+.tl b{display:block;font-weight:600}.tl span{color:var(--mute);font-size:14px}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 6px;padding:0;list-style:none}
+.chips li{padding:8px 15px;border-radius:99px;border:1px solid var(--ln);background:var(--glass);font-size:14px}
+.pg.on .chips li{animation:pop .6s cubic-bezier(.3,1.6,.5,1) both;animation-delay:calc(.7s + var(--j)*.06s)}
+@keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
+.chips.w li{background:linear-gradient(90deg,var(--t),var(--v));color:#06101c;font-weight:600;border:0}
+.sk h3{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:20px 0 10px;font-weight:600}
+.cg{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.cg .gl{padding:16px 18px}.cg b{display:block;font-size:15px;font-weight:600;line-height:1.35}.cg small{display:block;margin-top:5px}
+.ct{display:grid;gap:14px;max-width:520px}
+.ct a.gl{text-decoration:none;color:var(--ink);display:flex;justify-content:space-between;align-items:center;transition:.3s}
+.ct a.gl:hover{border-color:var(--t);transform:translateX(8px)}
+.ct small{display:block;margin-bottom:4px}
+#wipe{position:fixed;inset:0;z-index:30;display:flex;pointer-events:none}
+#wipe div{flex:1;transform:scaleY(0);transform-origin:top;background:linear-gradient(180deg,var(--v),#2a1d7a);transition:transform .5s cubic-bezier(.76,0,.24,1);transition-delay:calc(var(--n)*.06s)}
+#wipe div:nth-child(even){background:linear-gradient(180deg,var(--t),#127a6a)}
+#wipe.cov div{transform:scaleY(1)}
+#wipe.out div{transform:scaleY(0);transform-origin:bottom}
+#wipe b{position:absolute;inset:0;display:grid;place-items:center;font:italic 400 clamp(30px,6vw,70px) var(--s);color:#06101c;opacity:0;transition:opacity .3s}
+#wipe.cov b{opacity:1;transition-delay:.35s}
+.hint{position:fixed;right:5vw;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);z-index:9;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+@media(max-width:760px){.prof{grid-template-columns:1fr}.pg{align-items:flex-start}.hint{display:none}}
 </style></head>
 <body>
-<header><span><b>KM</b> · Campaign deck</span><span>Portfolio 2026</span></header>
 <canvas id="c"></canvas>
-<p class="hint">Pick a card from the hand</p>
-<nav id="nav" aria-label="Cards"></nav>
-<div id="dt" role="dialog" aria-modal="true"><div class="sheet"><div class="top"><h2 id="dh"></h2><button class="x" id="dx" aria-label="Close">×</button></div><div class="bd" id="db"></div></div></div>
+<nav class="top" id="nav" aria-label="Sections"></nav>
+
+<section class="pg on" data-n="Home"><div class="in">
+<p class="k" data-a style="--i:0">Portfolio · Coimbatore, Tamil Nadu</p>
+<h1 data-a style="--i:1">Kanishka<br><em>M</em></h1>
+<p data-a style="--i:2">Student developer building strong foundations in C, Python and HTML, and learning Java, cloud and process mining along the way.</p>
+<div data-a style="--i:3"><button class="btn" data-go="1">Open profile →</button><button class="btn g" data-go="3">View projects</button></div>
+</div></section>
+
+<section class="pg" data-n="Profile"><div class="in prof">
+<div class="gl card" data-tilt data-a style="--i:0">
+<div class="av"><span>KM</span></div>
+<h3>Kanishka M</h3>
+<p style="margin:6px auto 0;font-size:15px">Student developer · Coimbatore</p>
+<div class="chip"><i></i>Open to internships</div>
+</div>
+<div>
+<p class="k" data-a style="--i:1">Profile</p>
+<h2 data-a style="--i:2">The person <em>behind the code</em></h2>
+<dl data-a style="--i:3">
+<dt>Based in</dt><dd>Coimbatore, Tamil Nadu</dd>
+<dt>Core skills</dt><dd>C · Python · HTML</dd>
+<dt>Languages</dt><dd>Tamil, English</dd>
+<dt>Email</dt><dd>kanishkamohanraj31@gmail.com</dd>
+</dl>
+<div class="stats" data-a style="--i:4">
+<div><b data-count="14">0</b><span>Courses completed</span></div>
+<div><b data-count="3">0</b><span>Core languages</span></div>
+<div><b data-count="71" data-sfx="%">0</b><span>Latest semester</span></div>
+</div>
+</div></div></section>
+
+<section class="pg" data-n="About"><div class="in prof">
+<div>
+<p class="k" data-a style="--i:0">About</p>
+<h2 data-a style="--i:1">A learner who <em>keeps building</em></h2>
+<p data-a style="--i:2">I want to develop strong programming and web development skills, gain practical experience, and build a successful career in the technology industry.</p>
+<p data-a style="--i:3">Alongside classes I finish online courses in Java, data structures, MongoDB, Azure fundamentals, big data and process mining with Celonis.</p>
+</div>
+<div class="tl" data-a style="--i:3">
+<div><b>Semester 1</b><span>66%</span></div>
+<div><b>Semester 2</b><span>71% — up five points</span></div>
+<div><b>Next</b><span>Internships and real projects to apply what I’ve learned</span></div>
+</div></div></section>
+
+<section class="pg" data-n="Projects"><div class="in">
+<p class="k" data-a style="--i:0">Projects &amp; practice</p>
+<h2 data-a style="--i:1">Where theory <em>turns into code</em></h2>
+<div class="grid">
+<div class="gl" data-tilt data-a style="--i:2"><small>01 · Guided project</small><h3>Supermarket App</h3><p>Object-oriented Java covering classes, objects and program structure. Coursera.</p></div>
+<div class="gl" data-tilt data-a style="--i:3"><small>02 · Course</small><h3>Advanced Java Development</h3><p>Going deeper into Java after the OOP basics. Coursera.</p></div>
+<div class="gl" data-tilt data-a style="--i:4"><small>03 · Training</small><h3>Process mining with Celonis</h3><p>Six Celonis Academy courses on data loading, process mining, audit and action flows.</p></div>
+</div></div></section>
+
+<section class="pg" data-n="Skills"><div class="in sk">
+<p class="k" data-a style="--i:0">Skills</p>
+<h2 data-a style="--i:1">What I <em>work with</em></h2>
+<div data-a style="--i:2"><h3>Write</h3><ul class="chips w"><li style="--j:0">C</li><li style="--j:1">Python</li><li style="--j:2">HTML</li></ul></div>
+<div data-a style="--i:3"><h3>Learning</h3><ul class="chips"><li style="--j:3">Java OOP</li><li style="--j:4">Data structures</li><li style="--j:5">MongoDB</li><li style="--j:6">Azure fundamentals</li><li style="--j:7">Big data</li></ul></div>
+<div data-a style="--i:4"><h3>Process mining</h3><ul class="chips"><li style="--j:8">Celonis</li><li style="--j:9">Action flows</li><li style="--j:10">Process automation</li></ul></div>
+<div data-a style="--i:5"><h3>Languages</h3><ul class="chips"><li style="--j:11">Tamil</li><li style="--j:12">English</li></ul></div>
+</div></section>
+
+<section class="pg" data-n="Certificates"><div class="in">
+<p class="k" data-a style="--i:0">Certificates · 14</p>
+<h2 data-a style="--i:1">Courses <em>completed</em></h2>
+<div class="cg" id="cg"></div>
+</div></section>
+
+<section class="pg" data-n="Contact"><div class="in">
+<p class="k" data-a style="--i:0">Contact</p>
+<h2 data-a style="--i:1">Let’s build <em>something together</em></h2>
+<p data-a style="--i:2">Open to internships and learning opportunities. Email is the quickest way to reach me.</p>
+<div class="ct">
+<a class="gl" data-a style="--i:3" href="mailto:kanishkamohanraj31@gmail.com"><span><small>Email</small>kanishkamohanraj31@gmail.com</span>→</a>
+<a class="gl" data-a style="--i:4" href="tel:+918610828902"><span><small>Phone</small>8610828902</span>→</a>
+</div></div></section>
+
+<div id="wipe"><b>Kanishka M</b></div>
+<div class="hint">Scroll · swipe · ← →</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 (function(){
-var cert=[['Programming in Python','Coursera'],['C Programming with DSA Foundation','Coursera'],['Advanced Java Development','Coursera'],['Create a Supermarket App using Java OOP','Coursera'],['Preparing for AZ-900 Azure Fundamentals','Coursera'],['MongoDB Basics for Students — Skill Badge','ICT Academy · Skill-a-thon 2026'],['Celonis Foundations','Celonis Academy'],['Get Data Into Celonis','Celonis Academy'],['Process Mining: From Theory to Execution','Celonis Academy'],['Build Action Flows','Celonis Academy'],['Process Mining Audit Professional','Celonis Academy'],['Process Automation Concepts','Celonis Academy'],['Digital Application Fundamentals (STEM)','FutureSkills Prime, NASSCOM'],['Big Data Computing','NPTEL']];
-var K=[
-{n:'Languages',big:'Aa',s:['Tamil','English'],d:'<p>Tamil and English.</p>'},
-{n:'Certificates',big:'14',s:['Coursera · Celonis','NPTEL · NASSCOM','ICT Academy'],d:'<ul>'+cert.map(function(c){return'<li>'+c[0]+'<small>'+c[1]+'</small></li>'}).join('')+'</ul>'},
-{n:'Skills',big:'</>',s:['C · Python · HTML','Learning Java, DSA,','MongoDB, Azure'],d:'<p><b>Write:</b> C, Python, HTML.</p><p><b>Learning:</b> Java OOP, data structures, MongoDB, Azure fundamentals, big data, Celonis process mining.</p>'},
-{n:'Profile',big:'KM',s:['Kanishka M','Coimbatore, Tamil Nadu','Sem 1 66% · Sem 2 71%'],d:'<p><b>Kanishka M</b>, student developer based in Coimbatore, Tamil Nadu.</p><p><b>Core skills:</b> C, Python, HTML.<br><b>Languages:</b> Tamil, English.<br><b>Academics:</b> Semester 1, 66%. Semester 2, 71%.<br><b>Courses:</b> 14 completed.</p>'},
-{n:'About',big:'¶',s:['Strong programming and','web development skills,','built step by step.'],d:'<p>I want to develop strong programming and web development skills, gain practical experience, and build a successful career in the technology industry.</p><p>Alongside college I study Java, data structures, MongoDB, Azure and process mining through online courses.</p>'},
-{n:'Projects',big:'{ }',s:['Supermarket App','Java OOP · Coursera','Celonis training'],d:'<ul><li>Supermarket App<small>Java OOP · guided project, Coursera</small></li><li>Advanced Java Development<small>Coursera</small></li><li>Process mining with Celonis<small>Six Celonis Academy courses, from loading data to action flows</small></li></ul>'},
-{n:'Contact',big:'@',s:['kanishkamohanraj31','@gmail.com','8610828902'],d:'<p>Open to internships and learning opportunities.</p><p><a href="mailto:kanishkamohanraj31@gmail.com">kanishkamohanraj31@gmail.com</a><br><a href="tel:+918610828902">8610828902</a><br>Coimbatore, Tamil Nadu</p>'}
-];
-var M=3,STEP=14*Math.PI/180;
-// UI
-var nav=document.getElementById('nav'),dt=document.getElementById('dt'),dh=document.getElementById('dh'),db=document.getElementById('db');
-K.forEach(function(k,i){var b=document.createElement('button');b.textContent=k.n;b.onclick=function(){open(i)};b.onmouseenter=function(){hov=i};b.onmouseleave=function(){hov=-1};k.b=b;nav.appendChild(b)});
-function open(i){dh.innerHTML=K[i].n.replace(/^(\S+)/,'<em>$1</em>');db.innerHTML=K[i].d;dt.classList.add('o');document.getElementById('dx').focus()}
-function close(){dt.classList.remove('o')}
-document.getElementById('dx').onclick=close;dt.onclick=function(e){if(e.target===dt)close()};
-addEventListener('keydown',function(e){if(e.key==='Escape')close()});
-var hov=-1;
-var R;try{R=new THREE.WebGLRenderer({canvas:document.getElementById('c'),antialias:true,alpha:true})}catch(e){document.getElementById('c').style.display='none';return}
-R.setPixelRatio(Math.min(devicePixelRatio,2));
-var S=new THREE.Scene(),cam=new THREE.PerspectiveCamera(40,1,.1,100);
-function rs(){R.setSize(innerWidth,innerHeight,false);var a=innerWidth/innerHeight;cam.aspect=a;cam.position.set(0,1.2,Math.max(17,9/(Math.tan(20*Math.PI/180)*a)));cam.updateProjectionMatrix()}
+var cert=[['Programming in Python','Coursera'],['C Programming with DSA Foundation','Coursera'],['Advanced Java Development','Coursera'],['Create a Supermarket App using Java OOP','Coursera'],['Preparing for AZ-900 Azure Fundamentals','Coursera'],['MongoDB Basics for Students','ICT Academy · Skill-a-thon 2026'],['Celonis Foundations','Celonis Academy'],['Get Data Into Celonis','Celonis Academy'],['Process Mining: From Theory to Execution','Celonis Academy'],['Build Action Flows','Celonis Academy'],['Process Mining Audit Professional','Celonis Academy'],['Process Automation Concepts','Celonis Academy'],['Digital Application Fundamentals (STEM)','FutureSkills Prime, NASSCOM'],['Big Data Computing','NPTEL']];
+var cg=document.getElementById('cg');
+cert.forEach(function(c,i){var d=document.createElement('div');d.className='gl';d.setAttribute('data-a','');d.style.setProperty('--i',2+i*.5);d.innerHTML='<b>'+c[0]+'</b><small>'+c[1]+'</small>';cg.appendChild(d)});
+var P=[].slice.call(document.querySelectorAll('.pg')),N=P.length,cur=0,busy=false,nav=document.getElementById('nav'),wipe=document.getElementById('wipe');
+for(var w=0;w<8;w++){var d=document.createElement('div');d.style.setProperty('--n',w);wipe.insertBefore(d,wipe.lastChild)}
+var B=P.map(function(p,i){var b=document.createElement('button');b.textContent=p.dataset.n;b.onclick=function(){go(i)};nav.appendChild(b);return b});
+B[0].classList.add('a');
+document.querySelectorAll('[data-go]').forEach(function(b){b.onclick=function(){go(+b.dataset.go)}});
+// counters
+function count(p){p.querySelectorAll('[data-count]').forEach(function(e){var to=+e.dataset.count,t0=performance.now()+700,sf=e.dataset.sfx||'';(function f(){var k=Math.min(1,Math.max(0,(performance.now()-t0)/1200));e.textContent=Math.round(to*(1-Math.pow(1-k,3)))+sf;if(k<1)requestAnimationFrame(f)})()})}
+// tilt
+document.querySelectorAll('[data-tilt]').forEach(function(el){el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;el.style.transform='perspective(800px) rotateY('+(x-.5)*16+'deg) rotateX('+(.5-y)*16+'deg) translateZ(10px)';el.style.setProperty('--gx',x*100+'%');el.style.setProperty('--gy',y*100+'%')});el.addEventListener('pointerleave',function(){el.style.transform=''})});
+// 3D
+var cfg=[{x:2.6,s:1,h:.48,pq:[2,3]},{x:0,s:.55,h:.7,pq:[3,2]},{x:2.8,s:1,h:.78,pq:[2,5]},{x:0,s:.5,h:.55,pq:[3,5]},{x:2.8,s:1,h:.4,pq:[4,3]},{x:0,s:.5,h:.9,pq:[5,2]},{x:-2.6,s:1,h:.52,pq:[2,3]}];
+var R,S,cam,knot,wire,pts,tgt={x:2.6,s:1,h:.48},col=new THREE.Color(),mx=0,my=0,warp=0,ok=true;
+try{R=new THREE.WebGLRenderer({canvas:document.getElementById('c'),antialias:true,alpha:true})}catch(e){ok=false}
+if(ok){
+R.setPixelRatio(Math.min(devicePixelRatio,2));S=new THREE.Scene();cam=new THREE.PerspectiveCamera(55,1,.1,100);cam.position.z=7;
+var mat=new THREE.MeshStandardMaterial({color:0x5df2d6,metalness:.55,roughness:.22}),wm=new THREE.MeshBasicMaterial({color:0xffffff,wireframe:true,transparent:true,opacity:.14});
+function geo(pq){return new THREE.TorusKnotGeometry(1.5,.42,180,22,pq[0],pq[1])}
+knot=new THREE.Mesh(geo([2,3]),mat);wire=new THREE.Mesh(knot.geometry,wm);wire.scale.setScalar(1.06);knot.add(wire);S.add(knot);
+S.add(new THREE.AmbientLight(0x8899ff,.5));
+var l1=new THREE.PointLight(0x5df2d6,2.2,30),l2=new THREE.PointLight(0x8b6cff,2.4,30),l3=new THREE.PointLight(0xff7a90,1.6,30);S.add(l1,l2,l3);
+var pa=new Float32Array(1800);for(var i=0;i<1800;i++)pa[i]=(Math.random()-.5)*26;
+var pg=new THREE.BufferGeometry();pg.setAttribute('position',new THREE.BufferAttribute(pa,3));
+pts=new THREE.Points(pg,new THREE.PointsMaterial({size:.05,color:0xbfd0ff,transparent:true,opacity:.8,blending:THREE.AdditiveBlending,depthWrite:false}));S.add(pts);
+function rs(){R.setSize(innerWidth,innerHeight,false);cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix()}
 addEventListener('resize',rs);rs();
-var hand=new THREE.Group();hand.position.y=-5;S.add(hand);
-var W=4,Hh=6,D=3.2,cards=[],tex=function(c){var t=new THREE.CanvasTexture(c);t.anisotropy=4;return t};
-function wait(){var f=document.fonts;return f&&f.load?Promise.race([Promise.all([f.load('700 40px "Space Grotesk"'),f.load('italic 40px "Instrument Serif"')]),new Promise(function(r){setTimeout(r,1200)})]):Promise.resolve()}
-function face(i){var c=document.createElement('canvas');c.width=512;c.height=768;var x=c.getContext('2d'),dark=(i%2===0)&&i!==M,bg=dark?'#17170f':'#f3efe3',fg=dark?'#f3efe3':'#14140f',ac=dark?'#d6ff1f':'#14140f',k=K[i];
-x.fillStyle=bg;x.fillRect(0,0,512,768);x.strokeStyle=ac;x.lineWidth=3;x.strokeRect(18,18,476,732);
-var left=i<M,mid=i===M;x.textAlign=mid?'center':(left?'left':'right');var tx=mid?256:(left?44:468);
-x.fillStyle=ac;x.font='500 22px "Space Grotesk",sans-serif';x.fillText(('0'+(i+1))+' / 07',tx,66);
-x.fillStyle=fg;x.font='700 54px "Space Grotesk",sans-serif';x.fillText(k.n,tx,128);
-x.textAlign='center';x.fillStyle=dark?'#d6ff1f':'#14140f';x.font='italic 190px "Instrument Serif",Georgia,serif';x.fillText(k.big,256,470);
-x.fillStyle=fg;x.font='500 25px "Space Grotesk",sans-serif';k.s.forEach(function(l,j){x.fillText(l,256,590+j*36)});
-x.fillStyle=ac;x.fillRect(44,712,424,3);return c}
-function plate(){var c=document.createElement('canvas');c.width=800;c.height=288;var x=c.getContext('2d');x.fillStyle='#d6ff1f';x.fillRect(0,0,800,288);x.strokeStyle='#14140f';x.lineWidth=6;x.strokeRect(8,8,784,272);
-x.fillStyle='#14140f';x.font='500 24px "Space Grotesk",sans-serif';x.fillText('CAMPAIGN NO. 01 — PORTFOLIO 2026',34,56);
-x.font='700 100px "Space Grotesk",sans-serif';x.fillText('KANISHKA M',34,168);
-x.font='italic 38px "Instrument Serif",Georgia,serif';x.fillText('Student developer · C, Python, HTML · Coimbatore',34,238);return c}
-function build(){
-K.forEach(function(k,i){var g=new THREE.Group(),inner=new THREE.Group();
-var sh=new THREE.Mesh(new THREE.PlaneGeometry(W+.18,Hh+.18),new THREE.MeshBasicMaterial({color:0x000000,transparent:true,opacity:.4}));sh.position.set(.05,-.06,-.02);
-var m=new THREE.Mesh(new THREE.PlaneGeometry(W,Hh),new THREE.MeshBasicMaterial({map:tex(face(i))}));m.userData.i=i;
-inner.add(sh,m);inner.position.y=D+Hh/2;g.add(inner);g.position.z=-Math.abs(i-M)*.06;hand.add(g);cards.push({g:g,inner:inner,m:m,lift:0})});
-var p=new THREE.Mesh(new THREE.PlaneGeometry(5.2,1.872),new THREE.MeshBasicMaterial({map:tex(plate())}));p.position.set(0,D+2.5,.8);p.userData.i=M;hand.add(p);cards.plate=p;
-var pin=new THREE.Mesh(new THREE.TorusGeometry(.32,.07,10,32),new THREE.MeshBasicMaterial({color:0xd6ff1f}));pin.position.z=.2;hand.add(pin);
-var t0=performance.now();loop(t0)}
-var mx=0,my=0,ray=new THREE.Raycaster(),mv=new THREE.Vector2(),sp=0,hit=-1;
-var cv=document.getElementById('c');
-cv.addEventListener('pointermove',function(e){mx=e.clientX/innerWidth*2-1;my=e.clientY/innerHeight*2-1;mv.set(mx,-my);pick()});
-cv.addEventListener('pointerdown',function(e){mv.set(e.clientX/innerWidth*2-1,-(e.clientY/innerHeight*2-1));pick();if(hit>=0)open(hit)});
-function pick(){if(!cards.length)return;ray.setFromCamera(mv,cam);var h=ray.intersectObjects([cards.plate].concat(cards.map(function(c){return c.m})),false);hit=h.length?h[0].object.userData.i:-1;hov=hit;cv.style.cursor=hit>=0?'pointer':'default'}
-var e3=function(x){var c=1.4;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
-function loop(t0){requestAnimationFrame(function(){loop(t0)});
-var s=Math.min(1,(performance.now()-t0-300)/1500);sp=s<=0?0:e3(s);
-cards.forEach(function(c,i){c.g.rotation.z=-(i-M)*STEP*sp;c.lift+=((hov===i&&i!==M||(hov===M&&i===M)?.45:0)-c.lift)*.15;c.inner.position.y=D+Hh/2+c.lift;K[i].b.classList.toggle('h',hov===i)});
-hand.rotation.y+=(mx*.18-hand.rotation.y)*.06;hand.rotation.x+=(my*.06-hand.rotation.x)*.06;
-cam.lookAt(0,1,0);R.render(S,cam)}
-wait().then(build,build);
+addEventListener('pointermove',function(e){mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
+(function loop(t){requestAnimationFrame(loop);t=performance.now()/1000;
+var nar=innerWidth/innerHeight<1;
+var tx=nar?0:tgt.x,ts=nar?tgt.s*.6:tgt.s;
+knot.position.x+=(tx-knot.position.x)*.05;knot.position.y+=((nar?1.4:0)-knot.position.y)*.05;
+var sc=knot.scale.x+(ts-knot.scale.x)*.05;knot.scale.setScalar(sc);
+knot.rotation.x=t*.25+my*.8;knot.rotation.y=t*.35+warp*3+mx*.8;
+col.setHSL(tgt.h,.8,.6);mat.color.lerp(col,.05);
+warp+=((busy?1:0)-warp)*.08;
+cam.fov=55+warp*35;cam.updateProjectionMatrix();
+cam.position.x+=(mx*1.2-cam.position.x)*.04;cam.position.y+=(-my*.8-cam.position.y)*.04;cam.lookAt(0,0,0);
+pts.rotation.y=t*.03+warp*.8;pts.rotation.x=t*.01;
+l1.position.set(Math.sin(t)*6,Math.cos(t*.8)*4,4);l2.position.set(Math.cos(t*.7)*6,Math.sin(t*1.1)*4,3);l3.position.set(0,-5,Math.sin(t)*4+4);
+R.render(S,cam)})()}
+// transitions
+function swap(n){
+P[cur].classList.remove('on');B[cur].classList.remove('a');cur=n;P[n].scrollTop=0;P[n].classList.add('on');B[n].classList.add('a');
+B[n].scrollIntoView({block:'nearest',inline:'center'});
+tgt=cfg[n];
+if(ok){knot.geometry.dispose();var g=geo(cfg[n].pq);knot.geometry=g;wire.geometry=g}
+count(P[n])}
+function go(n){if(busy||n===cur||n<0||n>=N)return;busy=true;
+wipe.querySelector('b').textContent=P[n].dataset.n;
+wipe.className='cov';
+setTimeout(function(){swap(n);wipe.className='out'},900);
+setTimeout(function(){wipe.className='';busy=false},1700)}
+addEventListener('keydown',function(e){if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1)});
+function edge(d){var p=P[cur];if(d>0)return p.scrollTop+p.clientHeight>=p.scrollHeight-4;return p.scrollTop<=4}
+var wl=0;addEventListener('wheel',function(e){if(Math.abs(e.deltaY)<18||!edge(e.deltaY))return;var n=Date.now();if(n-wl<900)return;wl=n;go(cur+(e.deltaY>0?1:-1))},{passive:true});
+var ty=null;addEventListener('touchstart',function(e){ty=e.touches[0].clientY},{passive:true});
+addEventListener('touchend',function(e){if(ty===null)return;var d=ty-e.changedTouches[0].clientY;ty=null;if(Math.abs(d)>70&&edge(d))go(cur+(d>0?1:-1))},{passive:true});
+var h=(location.hash||'').slice(1).toLowerCase();P.forEach(function(p,i){if(p.dataset.n.toLowerCase()===h&&i)swap(i)});
 })();
 </script>
 </body></html>
